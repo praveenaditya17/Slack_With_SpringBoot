@@ -1,0 +1,32 @@
+package com.slack.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class SlackSendMessage {
+	
+	
+	
+	
+	  @Autowired
+	   RestTemplate restTemplate;
+
+	   @GetMapping(value = "/template/products")
+	   public void getProductList() {
+		  String url="https://hooks.slack.com/services/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";
+		  String msg="Hello Wrold";
+	      HttpHeaders headers = new HttpHeaders();
+	      headers.setContentType(MediaType.APPLICATION_JSON);
+	      HttpEntity<String> entity = new HttpEntity<String>(msg,headers);
+	      
+	      restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
+	   }
+
+}
