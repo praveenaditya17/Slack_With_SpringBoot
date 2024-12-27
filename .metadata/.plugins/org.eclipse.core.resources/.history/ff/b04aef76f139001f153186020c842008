@@ -1,5 +1,0 @@
-package com.slack.demo.controller;
-
-public class SlackSendMessage {
-
-}
